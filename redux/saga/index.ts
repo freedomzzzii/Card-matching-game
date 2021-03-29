@@ -4,7 +4,7 @@ import { watcherGetBestScore } from './score.saga';
 
 export default function* rootSaga() {
   yield all([
-    // language
+    // score
     watcherGetBestScore(),
   ]);
 }

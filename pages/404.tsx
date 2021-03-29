@@ -1,6 +1,6 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import styles from '../styles/404.module.scss'
+import styles from '../styles/404.module.scss';
 
 export default function Custom404() {
   return (
@@ -13,5 +13,5 @@ export default function Custom404() {
         <span className={styles.backToHome}>Back to home Page</span>
       </Link>
     </div>
-  )
+  );
 }

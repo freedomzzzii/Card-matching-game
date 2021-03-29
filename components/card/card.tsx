@@ -3,9 +3,10 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle, Ref } from
 import styles from './card.module.scss';
 
 import { shuffle } from '../../shared/shuffle';
+import constant from '../../common/constant';
 
 type propsCardTypes = {
-  number: number,
+  number: string,
   onClick: (index: number) => void,
   index: number,
   status: 'compare' | 'success' | null
@@ -19,9 +20,6 @@ type selectCardsType = {
   selectCards: Array<'compare' | 'success' | null>
 };
 
-// const dummyCard = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
-const dummyCard = [1, 2, 1, 2];
-
 function Card(props: propsCardTypes) {
   return (
     <div className={styles.boxCard} onClick={() => props.onClick(props.index)}>
@@ -34,9 +32,9 @@ function Card(props: propsCardTypes) {
 }
 
 export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
-  const [cards, setCards] = useState<Array<number>>([]);
+  const [cards, setCards] = useState<Array<string>>([]);
   const [selectCards, setSelectCards] = useState<selectCardsType>({ selectIndex: null, selectCards: [] });
-  const [isReady, setIsReady] = useState<boolean>(false)
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   const handleSelectCard = (index: number) => {
     try {
@@ -82,7 +80,7 @@ export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
   const handleFlipCard = (index: number): void => {
     try {
       const card = document.getElementById(`card-${index}`);
-      const cardFront = document.getElementById(`card-number-${index}`)
+      const cardFront = document.getElementById(`card-number-${index}`);
       const isFlip = card.className === styles.flip;
 
       if (isFlip) {
@@ -136,7 +134,8 @@ export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
 
   useEffect(() => {
     if (cards.length === 0) {
-      setCards(shuffle(dummyCard));
+
+      setCards(shuffle(constant.cards.split(',')));
       setIsReady(true);
     }
   }, [cards])
@@ -148,7 +147,6 @@ export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
   if (cards.length === 0) {
     return (<div>loading...</div>);
   }
-  console.log('card>>', cards)
 
   return (
     <div className={styles.container}>
@@ -164,5 +162,5 @@ export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
         ))
       }
     </div>
-  )
+  );
 });

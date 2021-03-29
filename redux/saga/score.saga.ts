@@ -12,9 +12,9 @@ function* workerGetBestScore(action) {
   });
 }
 
-export function* watcherGetBestScore() { // this is watcher for get BestScore
-  yield race({ // race for check have same action type call twice time and cancel action
-    response: yield takeLatest(constant.GET_BEST_SCORE_REQUEST, workerGetBestScore), // compare action type for call worker to work process
-    cancel: yield put({ type: constant.LOADING_GLOBAL_HIDE }), // cancel action on have same action type call twice time
+export function* watcherGetBestScore() {
+  yield race({
+    response: yield takeLatest(constant.GET_BEST_SCORE_REQUEST, workerGetBestScore),
+    cancel: yield put({ type: constant.LOADING_GLOBAL_HIDE }),
   })
 }

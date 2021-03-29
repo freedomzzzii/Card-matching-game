@@ -2,7 +2,13 @@ import { put } from 'redux-saga/effects';
 
 import constant from '../../common/constant';
 
-export function* workerServiceGetAPI(action) {
+type actionServiceTypes = {
+  pathAPI: string,
+  typeSuccess: string,
+  typeFailure: string,
+};
+
+export function* workerServiceGetAPI(action: actionServiceTypes) {
   try {
     yield put({ type: constant.LOADING_GLOBAL_SHOW });
 

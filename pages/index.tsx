@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css';
 
 import Summary from '../components/summary/summary';
 import Cards from '../components/card/card';
-import { fetchGetBestScore } from '../redux/action'
+import { fetchGetBestScore } from '../redux/action';
 import constant from '../common/constant';
 
 type stateTypes = {
@@ -22,11 +22,11 @@ export default function Home() {
   const [bestScore, setBestScore] = useState<number>(0);
   const [isFinish, setIsFinish] = useState<boolean>(false);
   const [isReady, setIsReady] = useState<boolean>(false);
-  const [globalScore, setGlobalScore] = useState<number>(0)
+  const [globalScore, setGlobalScore] = useState<number>(0);
 
   const ref = useRef(null);
   const dispatch = useDispatch();
-  const { globalBestScore } = useSelector((state: stateTypes) => state)
+  const { globalBestScore } = useSelector((state: stateTypes) => state);
 
   const handleCount = (): void => setCount(count + 1);
 
@@ -45,7 +45,7 @@ export default function Home() {
       ref.current?.handleResetGame();
       setIsFinish(false);
     }, 1000);
-  }
+  };
 
   useEffect(() => {
     if (!isReady) {
@@ -76,7 +76,7 @@ export default function Home() {
   }, [globalBestScore]);
 
   if (!isReady) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
