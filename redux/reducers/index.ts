@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { bestScore } from './score.reducer';
+import { globalBestScore } from './score.reducer';
 
 const reducers = {
   // score
-  bestScore,
+  globalBestScore,
 };
 
 const rootReducer = combineReducers(reducers);

@@ -12,7 +12,7 @@ type constantType = {
 
 const constant: constantType = {
   //  host
-  host: process.env.NODE_ENV,
+  host: process.env.NEXT_PUBLIC_HOST_API,
   // action type
   LOADING_GLOBAL_SHOW: 'LOADING_GLOBAL_SHOW',
   LOADING_GLOBAL_HIDE: 'LOADING_GLOBAL_HIDE',
