@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle, Ref } from 'react';
 
 import styles from './card.module.scss';
 
@@ -12,9 +12,15 @@ type propsCardTypes = {
 };
 type propsCardsTypes = {
   handleCount: () => void,
+  handleFinishGame: () => void,
+};
+type selectCardsType = {
+  selectIndex: null | number,
+  selectCards: Array<'compare' | 'success' | null>
 };
 
-const dummyCard = [1, 2, 3, 4, 5, 6]
+// const dummyCard = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+const dummyCard = [1, 2, 1, 2];
 
 function Card(props: propsCardTypes) {
   return (
@@ -27,10 +33,10 @@ function Card(props: propsCardTypes) {
   );
 }
 
-export default function Cards(props: propsCardsTypes) {
+export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
   const [cards, setCards] = useState<Array<number>>([]);
-  const [selectCards, setSelectCards] = useState<{ selectIndex: null | number, selectCards: Array<'compare' | 'success' | null> }>({ selectIndex: null, selectCards: [] });
-  const [isReady, setIsReady] = useState<boolean>(true)
+  const [selectCards, setSelectCards] = useState<selectCardsType>({ selectIndex: null, selectCards: [] });
+  const [isReady, setIsReady] = useState<boolean>(false)
 
   const handleSelectCard = (index: number) => {
     try {
@@ -50,12 +56,13 @@ export default function Cards(props: propsCardsTypes) {
 
             setSelectCards(selectCards);
             handleFlipCard(index);
+
+            handleCheckMatchAll();
           } else { // not match
             handleFlipCard(index);
             setIsReady(false); // set this value for can not click card before card is not finish flip
 
             setTimeout(() => { // set timeout for flip card not match
-              console.log('timeout>>')
               handleFlipCard(index);
               handleFlipCard(selectCards.selectIndex);
               selectCards.selectCards[index] = null;
@@ -95,15 +102,53 @@ export default function Cards(props: propsCardsTypes) {
     }
   }
 
+  const handleFlipAll = () => {
+    try {
+      cards.forEach((number, index) => document.getElementById(`card-${index}`).className = styles.card);
+    } catch (error) {
+      return
+    }
+  }
+
+  const handleCheckMatchAll = () => {
+    try {
+      const check = document.querySelectorAll(`.${styles.card}`);
+
+      if (check.length === 0) {
+        setIsReady(false);
+        setTimeout(() => {
+          handleFlipAll();
+          props.handleFinishGame();
+        }, 1000);
+      }
+    } catch (error) {
+      return
+    }
+  }
+
+  const handleResetGame = () => {
+    handleFlipAll();
+    setTimeout(() => {
+      setCards([]);
+      setSelectCards({ selectIndex: null, selectCards: [] });
+    }, 1000);
+  }
+
   useEffect(() => {
     if (cards.length === 0) {
-      setCards([...shuffle(dummyCard), ...shuffle(dummyCard)]);
+      setCards(shuffle(dummyCard));
+      setIsReady(true);
     }
   }, [cards])
+
+  useImperativeHandle(ref, () => ({
+    handleResetGame,
+  }));
 
   if (cards.length === 0) {
     return (<div>loading...</div>);
   }
+  console.log('card>>', cards)
 
   return (
     <div className={styles.container}>
@@ -120,4 +165,4 @@ export default function Cards(props: propsCardsTypes) {
       }
     </div>
   )
-}
+});
