@@ -1,0 +1,20 @@
+.container {
+  padding: 10px;
+  > div {
+    margin: 5px;
+    // background-color: #e63946;
+  }
+}
+
+.btnNewGame {
+  background-color: #e63946;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    display: flex;
+    > * {
+      flex: 1;
+    }
+  }
+}

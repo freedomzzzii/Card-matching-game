@@ -1,0 +1,10 @@
+.container {
+  /* background-color: blue; */
+
+}
+
+@media (max-width: 600px) {
+  /* .container {
+    background-color: red;
+  } */
+}
