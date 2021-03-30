@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.boxSummary {
+
+}
+
+.boxCards {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+  .boxCards {
+    flex: none;
+  }
+}
