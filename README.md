@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Matching Card Game
 
-## Getting Started
+### Description
 
-First, run the development server:
+- Develop with [Next.js](https://nextjs.org "Next.JS") (version 10) & React (version 17.0.2 and use react-hook), Redux, TypeScript
+- This game about matching card (12 card best score is 12 point, point count by open card)
+- You can edit maximum card on environtment variable.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+####KickStart
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Note. for kickstart project install [Git](https://git-scm.com/downloadsttp:// "Git"), [Node.js](https://nodejs.org/en/ "Node.js") or [Docker](https://docs.docker.com/engine/install/ubuntu/ "Docker")
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+###### Clone Repository
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+    git clone https://github.com/freedomzzzii/Card-matching-game.git
+	git checkout develop
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+###### ENV File
 
-## Learn More
+Create .env file on root project
 
-To learn more about Next.js, take a look at the following resources:
+    NEXT_PUBLIC_HOST_API=http://localhost:3000/api
+	NEXT_PUBLIC_NUMBER_CARD=1,2,3,4,5,6,1,2,3,4,5,6
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+###### Script Run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+	npm install
+	npm run dev
+	--- or ---
+	docker build . -t card-game
+	docker run -p 3000:3000 card-game
