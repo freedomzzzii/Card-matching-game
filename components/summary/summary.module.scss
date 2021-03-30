@@ -1,7 +1,10 @@
 .container {
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 160px;
   > div {
-    margin: 5px;
+    margin: 10px 5px;
   }
 }
 
@@ -16,13 +19,34 @@
   text-align: center;
   max-width: 100px;
   cursor: pointer;
+  display: block;
 }
 
 @media (max-width: 1024px) {
   .container {
-    display: flex;
+    width: unset;
     > * {
-      flex: 1;
+      width: calc(25% - 10px);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: unset;
+    > * {
+      width: calc(50% - 10px);
+      text-align: left;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .container {
+    width: unset;
+    > * {
+      width: calc(100% - 10px);
+      text-align: left;
     }
   }
 }

@@ -1,10 +1,21 @@
 .container {
-  /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
+}
+
+.boxSummary {
 
 }
 
-@media (max-width: 600px) {
-  /* .container {
-    background-color: red;
-  } */
+.boxCards {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+  .boxCards {
+    flex: none;
+  }
 }

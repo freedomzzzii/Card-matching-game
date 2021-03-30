@@ -81,8 +81,10 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.boxSummary}>
         <Summary count={count} bestScore={bestScore} globalScore={globalScore} handleNewGame={handleNewGame} />
+      </div>
+      <div className={styles.boxCards}>
         <Cards ref={ref} handleCount={handleCount} handleFinishGame={handleFinishGame} />
       </div>
     </div>
