@@ -7,6 +7,7 @@ import Summary from '../components/summary/summary';
 import Cards from '../components/card/card';
 import { fetchGetBestScore } from '../redux/action';
 import constant from '../common/constant';
+import Loading from '../components/loading/loading';
 
 type stateTypes = {
   globalBestScore: {
@@ -34,6 +35,7 @@ export default function Home() {
 
   const handleNewGame = (): void => {
     try {
+      setCount(0);
       ref.current?.handleResetGame();
     } catch (error) {
       return
@@ -76,7 +78,7 @@ export default function Home() {
   }, [globalBestScore]);
 
   if (!isReady) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

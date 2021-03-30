@@ -4,6 +4,7 @@ import styles from './card.module.scss';
 
 import { shuffle } from '../../shared/shuffle';
 import constant from '../../common/constant';
+import Loading from '../loading/loading';
 
 type propsCardTypes = {
   number: string,
@@ -125,10 +126,13 @@ export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
   }
 
   const handleResetGame = () => {
+    setIsReady(false);
     handleFlipAll();
+
     setTimeout(() => {
       setCards([]);
       setSelectCards({ selectIndex: null, selectCards: [] });
+      setIsReady(true);
     }, 1000);
   }
 
@@ -145,11 +149,12 @@ export default forwardRef(function Cards(props: propsCardsTypes, ref: Ref<{}>) {
   }));
 
   if (cards.length === 0) {
-    return (<div>loading...</div>);
+    return <Loading />;
   }
 
   return (
     <div className={styles.container}>
+      {!isReady && <Loading />}
       {
         cards.map((number, index) => (
           <Card
