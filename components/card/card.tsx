@@ -22,7 +22,7 @@ type selectCardsType = {
 
 function Card(props: propsCardTypes) {
   return (
-    <div className={styles.boxCard} onClick={() => props.onClick(props.index)}>
+    <div id={`box-card-${props.index}`} className={styles.boxCard} onClick={() => props.onClick(props.index)}>
       <div id={`card-${props.index}`} className={styles.card}>
         <div className={styles.back} />
         <div className={styles.front} id={`card-number-${props.index}`} />

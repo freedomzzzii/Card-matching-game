@@ -10,11 +10,11 @@ type propsTypes = {
 export default function Summary(props: propsTypes) {
   return (
     <div className={styles.container}>
-      <div>Click: {props.count}</div>
-      <div>My Best: {props.bestScore}</div>
-      <div>Global Best: {props.globalScore}</div>
+      <div>Click: <span id="summary-count">{props.count}</span></div>
+      <div>My Best: <span id="summary-best-count">{props.bestScore}</span></div>
+      <div>Global Best: <span id="summary-global-count">{props.globalScore}</span></div>
       <div className={styles.boxBtn}>
-        <span className={styles.btnNewGame} onClick={props.handleNewGame}>New Game</span>
+        <span id="btn-new-game" className={styles.btnNewGame} onClick={props.handleNewGame}>New Game</span>
       </div>
     </div>
   );
