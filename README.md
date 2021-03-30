@@ -7,7 +7,7 @@
 - You can edit maximum card on environtment variable.
 - Demo click [here](https://card-matching-game-ten.vercel.app "here") (deploy with vercel)
 
-####KickStart
+### KickStart
 
 Note. for kickstart project install [Git](https://git-scm.com/downloadsttp:// "Git"), [Node.js](https://nodejs.org/en/ "Node.js") or [Docker](https://docs.docker.com/engine/install/ubuntu/ "Docker")
 
@@ -18,7 +18,10 @@ Note. for kickstart project install [Git](https://git-scm.com/downloadsttp:// "G
 
 ###### ENV File
 
-Create .env file on root project
+Create .env file on root project you can update value
+Note. for variable
+NEXT_PUBLIC_HOST_API = URL to call api in app
+NEXT_PUBLIC_NUMBER_CARD = number of cards to render on UI
 
 	NEXT_PUBLIC_HOST_API=http://localhost:3000/api
 	NEXT_PUBLIC_NUMBER_CARD=1,2,3,4,5,6,1,2,3,4,5,6
