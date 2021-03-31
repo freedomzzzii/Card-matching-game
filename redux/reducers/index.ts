@@ -2,14 +2,11 @@ import { combineReducers } from 'redux';
 
 import { globalBestScore } from './score.reducer';
 
-const reducers = {
+import { loading } from './loading.reducer';
+
+export default combineReducers({
   // score
   globalBestScore,
-};
-
-const rootReducer = combineReducers(reducers);
-
-export {
-  reducers,
-  rootReducer,
-};
+  // loading
+  loading,
+});

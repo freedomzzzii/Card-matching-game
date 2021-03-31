@@ -9,6 +9,12 @@ export const globalBestScore = (state = constant.initialState, action: actionDef
       return Object.assign({}, state, { ...action });
     case constant.GET_BEST_SCORE_FAILURE:
       return Object.assign({}, state, { ...action });
+    case constant.UPDATE_BEST_SCORE_REQUEST:
+      return Object.assign({}, state, { ...action });
+    case constant.UPDATE_BEST_SCORE_SUCCESS:
+      return Object.assign({}, state, { ...action });
+    case constant.UPDATE_BEST_SCORE_FAILURE:
+      return Object.assign({}, state, { ...action });
     default:
       return state ? state : constant.initialState;
   }

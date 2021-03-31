@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.scss';
 
 import Summary from '../components/summary/summary';
 import Cards from '../components/card/card';
-import { fetchGetBestScore } from '../redux/action';
+import { fetchGetBestScore, fetchUpdateBestScore } from '../redux/action';
 import constant from '../common/constant';
 import Loading from '../components/loading/loading';
+import '../shared/firebase';
 
 type stateTypes = {
   globalBestScore: {
@@ -61,7 +62,7 @@ export default function Home() {
         setBestScore(count);
       }
       if (count < globalScore || globalScore === 0) {
-        setGlobalScore(count);
+        dispatch(fetchUpdateBestScore({ score: count }));
       }
       setCount(0);
       handleResetGame();
@@ -69,7 +70,7 @@ export default function Home() {
   }, [isFinish]);
 
   useEffect(() => {
-    if (globalBestScore.type === constant.GET_BEST_SCORE_SUCCESS) {
+    if (globalBestScore.type === constant.GET_BEST_SCORE_SUCCESS || globalBestScore.type === constant.UPDATE_BEST_SCORE_SUCCESS) {
       if (globalBestScore.data?.score) {
         setGlobalScore(globalBestScore.data?.score);
       }
