@@ -27,6 +27,8 @@
 @media (max-width: 1024px) {
   .container {
     width: unset;
+    justify-content: center;
+    align-items: center;
     > * {
       width: calc((100% / 4) - 20px);
     }
@@ -36,6 +38,8 @@
 @media (max-width: 600px) {
   .container {
     width: unset;
+    justify-content: unset;
+    align-items: unset;
     > * {
       width: calc(50% - 10px);
       text-align: left;
@@ -46,6 +50,8 @@
 @media (max-width: 300px) {
   .container {
     width: unset;
+    justify-content: unset;
+    align-items: unset;
     > * {
       width: calc(100% - 10px);
       text-align: left;
